@@ -1,33 +1,35 @@
 import { supabase } from './supabase/client'
-import type { Project } from '@/types/database'
+import type { Database } from '@/types/database'
 
-export async function getProjects() {
-  const { data: projects, error } = await supabase
+// Define the Project type from Database type
+type Project = Database['public']['Tables']['projects']['Row']
+
+export async function getProjects(): Promise<Project[]> {
+  const { data, error } = await supabase
     .from('projects')
     .select('*')
     .eq('published', true)
     .order('created_at', { ascending: false })
 
   if (error) {
-    console.error('Error fetching projects:', error)
+    console.error('Error:', error)
     return []
   }
 
-  return projects
+  return data || []
 }
 
-export async function getProjectBySlug(slug: string) {
-  const { data: project, error } = await supabase
+export async function getProjectBySlug(slug: string): Promise<Project | null> {
+  const { data, error } = await supabase
     .from('projects')
     .select('*')
     .eq('slug', slug)
-    .eq('published', true)
     .single()
 
   if (error) {
-    console.error('Error fetching project:', error)
+    console.error('Error:', error)
     return null
   }
 
-  return project
+  return data
 }
