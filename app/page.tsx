@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import Image from 'next/image'
 import { getProjects } from '@/lib/projects'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default async function Home() {
   const projects = await getProjects()
@@ -31,7 +31,7 @@ export default async function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">Featured Projects</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project) => (
+            {projects?.map((project) => (
               <Link key={project.id} href={`/projects/${project.slug}`} className="group">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg mb-4">
                   <Image
