@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+// Build version: 1.0.1
 export default function Home() {
   return (
     <main className="min-h-screen bg-white flex items-center justify-center">
