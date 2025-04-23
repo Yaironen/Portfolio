@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
+
+This is a Next.js project bootstrapped with create-next-app.
+
+## Deployment Status
+
+Latest deployment: [View Live Site](https://portfolio-yairs-projects-e8f881af.vercel.app)
 
 ## Getting Started
 
